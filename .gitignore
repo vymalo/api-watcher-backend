@@ -1,0 +1,10 @@
+*.db
+data
+dist
+.env
+node_modules
+gen
+*.js
+.idea
+!webpack.*.js
+.DS_Store

@@ -1,0 +1,12 @@
+*.db
+data
+dist
+.env
+node_modules
+gen
+*.js
+.idea
+.DS_Store
+*.yml
+*.json
+*.md
