@@ -30,7 +30,7 @@ export class AuthService implements BaseService {
         });
 
         passport.use(
-            'sms_auth',
+            'api_auth',
             new AppCustomStrategy(this.handleCustomStrategy)
         );
 

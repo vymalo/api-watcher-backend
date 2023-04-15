@@ -1,7 +1,7 @@
 import { Model, Modifiers } from 'objection';
 import { randomUUID } from 'crypto';
 
-export class SmsRequestModel extends Model {
+export class ApiRequestModel extends Model {
     static modifiers: Modifiers = {
         searchByQuery(query, name) {
             query.where((query) => {
@@ -21,7 +21,7 @@ export class SmsRequestModel extends Model {
     request_body!: string;
 
     static get tableName() {
-        return 'sms_requests';
+        return 'api_requests';
     }
 
     $beforeInsert() {

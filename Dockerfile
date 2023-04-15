@@ -6,7 +6,7 @@ COPY package*.json ./
 
 FROM curlimages/curl as UI
 
-ARG UI_VERSION=v1.0.0
+ARG UI_VERSION=v1.1.0
 
 WORKDIR /app
 
