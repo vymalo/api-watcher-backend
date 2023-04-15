@@ -17,6 +17,7 @@ export class CommonService implements BaseService {
                             "'unsafe-inline'",
                         ],
                         scriptSrc: null,
+                        upgradeInsecureRequests: null,
                     },
                 },
             })

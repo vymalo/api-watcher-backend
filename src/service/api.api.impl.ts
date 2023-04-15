@@ -1,28 +1,28 @@
-import { SmsRequestModel } from '../model/sms-request.model';
+import { ApiRequestModel } from '../model/api-request.model';
 import {
-    AddSmsRequestResponse,
-    DeleteSmsRequestResponse,
-    GetAnSmsRequestResponse,
-    GetSmsRequestsResponse,
-    SmsApi,
-} from '../gen/api/api/sms/types';
+    AddApiRequestResponse,
+    DeleteApiRequestResponse,
+    GetAnApiRequestResponse,
+    GetApiRequestsResponse,
+    ApiApi,
+} from '../gen/api/api/api/types';
 import { Api } from '../gen/api/models';
 import { SocketService } from './socket.service';
 
-export class SmsApiImpl implements SmsApi {
+export class ApiApiImpl implements ApiApi {
     constructor(private readonly socketService: SocketService) {}
 
-    public async addSmsRequest(request: {
-        [name: string]: Api.SmsRequestValue;
-    }): Promise<AddSmsRequestResponse> {
-        const insertedGraph = await SmsRequestModel.transaction(async (trx) => {
-            const saved = await SmsRequestModel.query(trx).insertGraph({
+    public async addApiRequest(request: {
+        [name: string]: Api.ApiRequestValue;
+    }): Promise<AddApiRequestResponse> {
+        const insertedGraph = await ApiRequestModel.transaction(async (trx) => {
+            const saved = await ApiRequestModel.query(trx).insertGraph({
                 request_body: JSON.stringify(request),
             });
             return saved;
         });
 
-        this.socketService.send('new_sms_request', this.map(insertedGraph));
+        this.socketService.send('new_api_request', this.map(insertedGraph));
 
         return {
             body: this.map(insertedGraph),
@@ -30,10 +30,10 @@ export class SmsApiImpl implements SmsApi {
         };
     }
 
-    public async deleteSmsRequest(
-        smsRequestId: string
-    ): Promise<DeleteSmsRequestResponse> {
-        const q = SmsRequestModel.query().findById(smsRequestId).delete();
+    public async deleteApiRequest(
+        apiRequestId: string
+    ): Promise<DeleteApiRequestResponse> {
+        const q = ApiRequestModel.query().findById(apiRequestId).delete();
 
         const r = await q;
 
@@ -42,10 +42,10 @@ export class SmsApiImpl implements SmsApi {
         };
     }
 
-    public async getAnSmsRequest(
-        smsRequestId: string
-    ): Promise<GetAnSmsRequestResponse> {
-        const q = SmsRequestModel.query().findById(smsRequestId);
+    public async getAnApiRequest(
+        apiRequestId: string
+    ): Promise<GetAnApiRequestResponse> {
+        const q = ApiRequestModel.query().findById(apiRequestId);
 
         const r = await q;
 
@@ -60,13 +60,13 @@ export class SmsApiImpl implements SmsApi {
         };
     }
 
-    public async getSmsRequests(
+    public async getApiRequests(
         query: string | undefined,
         createdAt: string | undefined,
         page = 0,
         size = 4
-    ): Promise<GetSmsRequestsResponse> {
-        const q = SmsRequestModel.query();
+    ): Promise<GetApiRequestsResponse> {
+        const q = ApiRequestModel.query();
 
         if (query) {
             q.modify('searchByQuery', query);
@@ -88,7 +88,7 @@ export class SmsApiImpl implements SmsApi {
         };
     }
 
-    private map({ id, created_at, request_body }: SmsRequestModel) {
+    private map({ id, created_at, request_body }: ApiRequestModel) {
         return {
             id,
             created_at,

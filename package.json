@@ -16,7 +16,7 @@
     "@babel/core": "^7.21.3",
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-typescript": "^7.21.0",
-    "@openapi-generator-plus/typescript-express-passport-server-generator": "^2.6.0",
+    "@openapi-generator-plus/typescript-express-passport-server-generator": "^2.7.0",
     "@types/better-sqlite3": "^7.6.3",
     "@types/compression": "^1.7.2",
     "@types/cors": "^2.8.13",
