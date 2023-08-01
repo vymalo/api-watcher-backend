@@ -110,3 +110,5 @@ jobs:
           context: .
           push: true
           tags: ssegning/api-watcher:latest
+          platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v8,darwin
+          
