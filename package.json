@@ -68,7 +68,7 @@
     "express-session": "^1.17.3",
     "express-winston": "^4.2.0",
     "helmet": "^6.2.0",
-    "knex": "^2.4.2",
+    "knex": "^2.5.0",
     "lodash": "4.17.21",
     "objection": "^3.0.4",
     "passport": "^0.6.0",
